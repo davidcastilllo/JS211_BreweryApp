@@ -22,7 +22,7 @@ let displayBrew = (breweries) => {
   li.classList = "brewList"
   li.innerHTML = `<b>Name:</b> ${b.name} <br> <b>Address:</b> ${b.street} <br> <b>Phone:</b> ${b.phone} <br> <b>Website:</b> ${b.website_url}`
   let heart = document.createElement('img')
-  heart.classList = 'button'
+  heart.classList = 'unstarred'
   heart.src = "./Star.png" 
   heart.onclick = (e) => {favorite(e)}
   li.appendChild(heart)
@@ -32,11 +32,14 @@ let displayBrew = (breweries) => {
 }
 
 let favorite = (e) => {
- if (e.target.src == "http://127.0.0.1:5500/Star.png") {
+ if (e.target.classList.contains('unstarred')) {
+  e.target.classList.remove('unstarred')
+  e.target.classList.add('starred')
   e.target.src = './Starred.png'
  }
  else {
+  e.target.classList.remove('starred')
+  e.target.classList.add('unstarred')
   e.target.src = "./Star.png" 
  }
- console.log(e.target.src)
 }
