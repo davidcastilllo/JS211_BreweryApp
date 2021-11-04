@@ -1,16 +1,31 @@
 // API: https://www.openbrewerydb.org/documentation/01-listbreweries
 
-let fetchBrew = () => {
- let userCity = document.getElementById("userCity").value
+'use strict';
+
+const assert = require('assert');
+const readline = require('readline');
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout
+});
+
+
+// ***********************************************************************************
+
+
+let fetchBrew = (fetch,userCity) => {
+ // let userCity = document.getElementById("userCity").value
  let url = 'https://api.openbrewerydb.org/breweries?by_city=' + userCity
  fetch(url)
  .then(response => response.json())
  .then(json => {
      let breweries = json 
      if (breweries == '') {
-      window.alert('Please enter in a valid city')
+      console.log('Please enter valid city')
      }
-     else {  displayBrew(breweries) }
+     else {  
+      displayBrew(breweries) 
+     }
  });
 }
 
@@ -43,3 +58,41 @@ let favorite = (e) => {
   e.target.src = "./Star.png" 
  }
 }
+
+
+// ***********************************************************************************
+
+
+// Tests
+
+if (typeof describe === 'function') {
+
+ describe('fetchBrew()', () => {
+   it('Can fetch the right url', () => {
+     let fakeFetch = url => {
+      assert(
+       url === 
+       'https://api.openbrewerydb.org/breweries?by_city=Austin'
+      )
+      return  new Promise(function(resolve) {
+      
+      })
+     }
+     fetchBrew(fakeFetch,'Austin')
+   });
+ });
+
+ describe('fetchBrew()', () => {
+  it('parses the response of fetch correctly', () => {
+    let fakeFetch = url => {
+     return Promise.resolve({
+      json: () => Promise.resolve({
+
+      })
+     })
+    }
+    fetchBrew(fakeFetch,'Austin')
+  });
+});
+
+} 

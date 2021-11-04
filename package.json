@@ -1,0 +1,22 @@
+{
+  "name": "js211_breweryapp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "test": "mocha --no-timeouts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/davidcastilllo/JS211_BreweryApp.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/davidcastilllo/JS211_BreweryApp/issues"
+  },
+  "homepage": "https://github.com/davidcastilllo/JS211_BreweryApp#readme",
+  "dependencies": {
+    "mocha": "^9.1.3"
+  }
+}
