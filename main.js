@@ -38,4 +38,5 @@ let favorite = (e) => {
  else {
   e.target.src = "./Star.png" 
  }
+ console.log(e.target.src)
 }
